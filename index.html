@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Nepali NC — The official community hub for Nepalis living in North Carolina. Events, businesses, jobs, forums and cultural resources."/>
+<meta name="theme-color" content="#C41E3A"/>
+<title>Nepali NC — Community Hub for North Carolina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --red: #C41E3A;
+  --red-light: #F5E6E9;
+  --red-dark: #8B1225;
+  --blue: #003893;
+  --blue-light: #E8EDF8;
+  --blue-dark: #001E5C;
+  --gold: #D4A017;
+  --gold-light: #FBF3E0;
+  --white: #FEFCF8;
+  --off-white: #F7F3ED;
+  --stone: #E8E2D9;
+  --ink: #1A1410;
+  --ink-mid: #4A3F35;
+  --ink-soft: #7A6E64;
+  --ink-ghost: #B8AFA5;
+  --radius: 4px;
+  --radius-lg: 10px;
+  --shadow: 0 2px 16px rgba(26,20,16,0.08);
+  --shadow-lg: 0 8px 40px rgba(26,20,16,0.14);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── DUAL CLOCK BAR ── */
+.clock-bar {
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  padding: 0; overflow: hidden;
+}
+.clock-side {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  gap: 14px; padding: 10px 24px;
+}
+.clock-side.nepal { background: rgba(196,30,58,0.18); border-right: 1px solid rgba(255,255,255,0.08); }
+.clock-side.usa { background: rgba(0,56,147,0.18); }
+.clock-flag { font-size: 20px; line-height: 1; }
+.clock-info { display: flex; flex-direction: column; gap: 1px; }
+.clock-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; }
+.clock-time { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; color: white; letter-spacing: -0.01em; line-height: 1.1; }
+.clock-date { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 1px; }
+.clock-divider {
+  width: 1px; background: rgba(255,255,255,0.1); align-self: stretch;
+  flex-shrink: 0;
+}
+.clock-center {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 8px 20px; gap: 2px;
+}
+.clock-diff { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.05em; white-space: nowrap; }
+.clock-diff strong { color: rgba(255,255,255,0.6); }
+@media (max-width: 600px) {
+  .clock-bar { flex-direction: column; }
+  .clock-side { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .clock-side.usa { border-bottom: none; }
+  .clock-center { display: none; }
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(254,252,248,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--stone);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 64px;
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-mark {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--red);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; color: white; font-size: 20px; font-weight: 700;
+  box-shadow: 0 0 0 3px var(--red-light);
+}
+.logo-words { line-height: 1.2; }
+.logo-en { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; color: var(--ink); }
+.logo-np { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.05em; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { text-decoration: none; font-size: 13.5px; color: var(--ink-mid); font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--red); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.lang-pill {
+  display: flex; border: 1px solid var(--stone); border-radius: 20px; overflow: hidden;
+}
+.lang-pill button {
+  border: none; background: none; padding: 5px 12px; font-size: 12px;
+  cursor: pointer; color: var(--ink-soft); font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+.lang-pill button.active { background: var(--ink); color: white; }
+.btn-join {
+  background: var(--red); color: white; border: none;
+  border-radius: 20px; padding: 8px 20px; font-size: 13px; font-weight: 500;
+  cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.1s;
+}
+.btn-join:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 540px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 80px 40px 60px;
+  background: var(--ink);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 20% 50%, rgba(196,30,58,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 70% at 80% 40%, rgba(0,56,147,0.4) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 80% at 50% 100%, rgba(212,160,23,0.15) 0%, transparent 60%);
+}
+.hero-pattern {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: repeating-linear-gradient(0deg, white 0, white 1px, transparent 1px, transparent 48px),
+    repeating-linear-gradient(90deg, white 0, white 1px, transparent 1px, transparent 48px);
+}
+.hero-content { position: relative; z-index: 2; max-width: 640px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px; padding: 5px 16px; font-size: 12px; color: rgba(255,255,255,0.7);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif; font-size: clamp(38px, 6vw, 58px);
+  font-weight: 300; color: white; line-height: 1.15; margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero p { font-size: 15px; color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto 32px; line-height: 1.7; }
+.hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+.cta-primary {
+  background: var(--red); color: white; border: none;
+  border-radius: 4px; padding: 12px 28px; font-size: 14px; font-weight: 500;
+  cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s;
+  letter-spacing: 0.01em;
+}
+.cta-primary:hover { background: #A51830; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(196,30,58,0.4); }
+.cta-ghost {
+  background: transparent; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 4px; padding: 12px 28px; font-size: 14px; font-weight: 400;
+  cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s;
+}
+.cta-ghost:hover { border-color: rgba(255,255,255,0.5); color: white; background: rgba(255,255,255,0.06); }
+.hero-stats {
+  display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+  padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.stat { text-align: center; }
+.stat-num { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 500; color: white; line-height: 1; }
+.stat-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* ── SECURITY TRUST BAR ── */
+.trust-bar {
+  background: var(--off-white); border-bottom: 1px solid var(--stone);
+  padding: 12px 40px;
+  display: flex; align-items: center; justify-content: center; gap: 32px;
+  flex-wrap: wrap;
+}
+.trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-soft); }
+.trust-icon { font-size: 14px; }
+.trust-item strong { color: var(--ink-mid); font-weight: 500; }
+
+/* ── SECTIONS ── */
+.section { padding: 72px 40px; }
+.section-alt { background: var(--off-white); }
+.section-label {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--red); font-weight: 500; margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Fraunces', serif; font-size: clamp(26px, 4vw, 36px);
+  font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.section-sub { font-size: 14px; color: var(--ink-soft); max-width: 480px; }
+.section-header { margin-bottom: 40px; }
+.section-header-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.see-all-link { font-size: 13px; color: var(--red); text-decoration: none; font-weight: 500; white-space: nowrap; }
+.see-all-link:hover { color: var(--red-dark); }
+
+/* ── FEATURE GRID ── */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--stone); border: 1px solid var(--stone); border-radius: var(--radius-lg); overflow: hidden; }
+.feature-cell {
+  background: var(--white); padding: 28px 24px;
+  cursor: pointer; transition: background 0.2s;
+}
+.feature-cell:hover { background: var(--off-white); }
+.fc-icon {
+  width: 48px; height: 48px; border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px;
+}
+.fc-title { font-weight: 500; font-size: 15px; margin-bottom: 6px; color: var(--ink); }
+.fc-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ── EVENTS ── */
+.events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.event-card {
+  background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius-lg);
+  overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer;
+}
+.event-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.event-stripe { height: 5px; }
+.event-body { padding: 20px; }
+.event-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.event-badge { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; font-weight: 500; }
+.event-date-pill { font-size: 11px; color: var(--ink-soft); }
+.event-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 400; line-height: 1.3; margin-bottom: 8px; color: var(--ink); }
+.event-where { font-size: 12px; color: var(--ink-soft); display: flex; align-items: center; gap: 5px; }
+
+/* ── BUSINESSES ── */
+.biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.biz-card {
+  background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius-lg);
+  padding: 20px; display: flex; align-items: flex-start; gap: 14px;
+  transition: box-shadow 0.2s; cursor: pointer;
+}
+.biz-card:hover { box-shadow: var(--shadow); }
+.biz-avatar {
+  width: 46px; height: 46px; border-radius: var(--radius); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+.biz-info { flex: 1; min-width: 0; }
+.biz-name { font-weight: 500; font-size: 14px; margin-bottom: 2px; }
+.biz-cat { font-size: 12px; color: var(--ink-soft); margin-bottom: 6px; }
+.biz-row { display: flex; align-items: center; justify-content: space-between; }
+.biz-city { font-size: 11px; color: var(--ink-ghost); }
+.biz-stars { font-size: 11px; color: var(--gold); }
+
+/* ── JOBS ── */
+.jobs-list { display: flex; flex-direction: column; gap: 1px; background: var(--stone); border: 1px solid var(--stone); border-radius: var(--radius-lg); overflow: hidden; }
+.job-row {
+  background: var(--white); padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  cursor: pointer; transition: background 0.15s;
+}
+.job-row:hover { background: var(--off-white); }
+.job-left { flex: 1; min-width: 0; }
+.job-title-text { font-weight: 500; font-size: 14px; margin-bottom: 3px; }
+.job-meta { font-size: 12px; color: var(--ink-soft); }
+.job-right { display: flex; align-items: center; gap: 10px; }
+.job-type { font-size: 11px; padding: 4px 12px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
+.job-apply { font-size: 12px; color: var(--red); font-weight: 500; }
+
+/* ── NEWS ── */
+.news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 640px) { .news-grid { grid-template-columns: 1fr; } }
+.news-card {
+  border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--stone);
+  cursor: pointer; transition: box-shadow 0.2s;
+}
+.news-card:hover { box-shadow: var(--shadow); }
+.news-card-img {
+  height: 140px; display: flex; align-items: center; justify-content: center;
+  font-size: 36px; position: relative;
+}
+.news-card-body { padding: 18px; background: var(--white); }
+.news-tag-pill { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; font-weight: 500; display: inline-block; margin-bottom: 8px; }
+.news-title-text { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400; line-height: 1.4; margin-bottom: 8px; }
+.news-meta-row { font-size: 11px; color: var(--ink-ghost); }
+
+/* ── CULTURAL ── */
+.cultural-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+.cultural-card {
+  background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius-lg);
+  padding: 24px 16px; text-align: center; cursor: pointer; transition: all 0.2s;
+}
+.cultural-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--red); }
+.cultural-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+.cultural-name { font-weight: 500; font-size: 13px; margin-bottom: 4px; }
+.cultural-sub { font-size: 11px; color: var(--ink-soft); }
+
+/* ── FORUM PREVIEW ── */
+.forum-list { display: flex; flex-direction: column; gap: 1px; background: var(--stone); border: 1px solid var(--stone); border-radius: var(--radius-lg); overflow: hidden; }
+.forum-row {
+  background: var(--white); padding: 16px 24px;
+  display: flex; align-items: center; gap: 16px; cursor: pointer; transition: background 0.15s;
+}
+.forum-row:hover { background: var(--off-white); }
+.forum-avatar {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 500; color: white;
+}
+.forum-body { flex: 1; min-width: 0; }
+.forum-question { font-size: 13.5px; font-weight: 500; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.forum-info { font-size: 11px; color: var(--ink-soft); }
+.forum-right { text-align: right; flex-shrink: 0; }
+.forum-count { font-size: 12px; font-weight: 500; color: var(--ink-mid); }
+.forum-time { font-size: 11px; color: var(--ink-ghost); }
+
+/* ── CITIES ── */
+.cities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+.city-card {
+  background: var(--white); border: 1px solid var(--stone); border-radius: var(--radius-lg);
+  padding: 20px 14px; text-align: center; cursor: pointer; transition: all 0.2s;
+}
+.city-card:hover { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-light); }
+.city-icon { font-size: 24px; margin-bottom: 8px; }
+.city-name { font-weight: 500; font-size: 13px; }
+.city-count { font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  margin: 0 40px 72px; border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--ink); position: relative; padding: 56px 48px;
+  display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+}
+.cta-banner-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 120% at 0% 50%, rgba(196,30,58,0.35) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 100% at 100% 50%, rgba(0,56,147,0.3) 0%, transparent 60%);
+}
+.cta-banner-content { position: relative; z-index: 1; }
+.cta-banner h2 { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 300; color: white; margin-bottom: 8px; }
+.cta-banner p { font-size: 14px; color: rgba(255,255,255,0.6); }
+.cta-banner-actions { position: relative; z-index: 1; display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); color: rgba(255,255,255,0.5); padding: 56px 40px 32px;
+}
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+@media (max-width: 700px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+.footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 12px; max-width: 240px; }
+.footer-col h4 { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); font-weight: 500; margin-bottom: 14px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
+.footer-col a:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; }
+.footer-security { display: flex; gap: 20px; }
+.sec-badge { display: flex; align-items: center; gap: 5px; font-size: 11px; }
+.sec-badge span { color: rgba(255,255,255,0.35); }
+.sec-badge strong { color: rgba(255,255,255,0.6); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(26,20,16,0.6); z-index: 200;
+  display: none; align-items: center; justify-content: center; padding: 20px;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white); border-radius: var(--radius-lg);
+  padding: 40px; max-width: 440px; width: 100%; position: relative;
+  box-shadow: var(--shadow-lg);
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 32px; height: 32px; border: none; background: var(--off-white);
+  border-radius: 50%; cursor: pointer; font-size: 16px; color: var(--ink-mid);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal h2 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 400; margin-bottom: 6px; }
+.modal p { font-size: 13px; color: var(--ink-soft); margin-bottom: 24px; }
+.modal-tabs { display: flex; gap: 0; border: 1px solid var(--stone); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }
+.modal-tab { flex: 1; padding: 8px; border: none; background: none; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; color: var(--ink-soft); transition: all 0.2s; }
+.modal-tab.active { background: var(--ink); color: white; }
+.form-group { margin-bottom: 16px; }
+.form-label { font-size: 12px; font-weight: 500; color: var(--ink-mid); margin-bottom: 5px; display: block; }
+.form-input {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--stone); border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink); background: white;
+  transition: border-color 0.2s; outline: none;
+}
+.form-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px var(--red-light); }
+.form-submit {
+  width: 100%; background: var(--red); color: white; border: none;
+  border-radius: var(--radius); padding: 11px; font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 500; cursor: pointer; margin-top: 8px; transition: background 0.2s;
+}
+.form-submit:hover { background: var(--red-dark); }
+.form-secure { display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 11px; color: var(--ink-ghost); margin-top: 12px; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.hero-content > * { animation: fadeUp 0.7s ease both; }
+.hero-eyebrow { animation-delay: 0.1s; }
+.hero h1 { animation-delay: 0.2s; }
+.hero p { animation-delay: 0.3s; }
+.hero-ctas { animation-delay: 0.4s; }
+.hero-stats { animation-delay: 0.5s; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .section { padding: 48px 20px; }
+  .cta-banner { margin: 0 20px 48px; padding: 36px 28px; }
+  footer { padding: 40px 20px 24px; }
+  .trust-bar { padding: 10px 20px; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- DUAL CLOCK BAR -->
+<div class="clock-bar">
+  <div class="clock-side nepal">
+    <div class="clock-flag">🇳🇵</div>
+    <div class="clock-info">
+      <div class="clock-label">Nepal — Kathmandu (NST)</div>
+      <div class="clock-time" id="np-time">--:--:-- --</div>
+      <div class="clock-date" id="np-date">-- -- ---- BS · ---- AD</div>
+    </div>
+  </div>
+  <div class="clock-center">
+    <div class="clock-diff">Nepal is <strong>+9h 45m</strong> ahead of NC</div>
+  </div>
+  <div class="clock-side usa">
+    <div class="clock-flag">🇺🇸</div>
+    <div class="clock-info">
+      <div class="clock-label">North Carolina (ET)</div>
+      <div class="clock-time" id="us-time">--:--:-- --</div>
+      <div class="clock-date" id="us-date">--, --- --, ----</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">न</div>
+    <div class="logo-words">
+      <div class="logo-en">Nepali NC</div>
+      <div class="logo-np">नेपाली समुदाय — North Carolina</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#events">Events</a></li>
+    <li><a href="#businesses">Businesses</a></li>
+    <li><a href="#jobs">Jobs</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#forum">Forum</a></li>
+    <li><a href="#culture">Culture</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-pill">
+      <button class="active" onclick="setLang('en',this)">EN</button>
+      <button onclick="setLang('np',this)">नेपाली</button>
+    </div>
+    <button class="btn-join" onclick="openModal()">Join free</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">🏔 Serving all of North Carolina</div>
+    <h1>Your <em>home away</em><br>from home</h1>
+    <p>The official community hub connecting Nepalis across Charlotte, Raleigh, Durham, Cary and beyond — events, businesses, jobs, culture and more.</p>
+    <div class="hero-ctas">
+      <button class="cta-primary" onclick="openModal()">Join the community</button>
+      <button class="cta-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Explore features</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">2,400+</div><div class="stat-lbl">Members</div></div>
+      <div class="stat"><div class="stat-num">180+</div><div class="stat-lbl">Businesses</div></div>
+      <div class="stat"><div class="stat-num">50+</div><div class="stat-lbl">Events/month</div></div>
+      <div class="stat"><div class="stat-num">12</div><div class="stat-lbl">Cities covered</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">🔒</span><strong>SSL encrypted</strong> — all data secured</div>
+  <div class="trust-item"><span class="trust-icon">🛡️</span><strong>GDPR compliant</strong> — your privacy protected</div>
+  <div class="trust-item"><span class="trust-icon">⚡</span><strong>CDN powered</strong> — loads in &lt;0.5s</div>
+  <div class="trust-item"><span class="trust-icon">✅</span><strong>Verified members</strong> — safe community</div>
+  <div class="trust-item"><span class="trust-icon">🌐</span><strong>99.99% uptime</strong> — always online</div>
+</div>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-header">
+    <div class="section-label">What we offer</div>
+    <div class="section-title">Everything your community needs</div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-cell" onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'})">
+      <div class="fc-icon" style="background:var(--red-light);">📅</div>
+      <div class="fc-title">Events calendar</div>
+      <div class="fc-desc">Dashain, Tihar, cultural nights, picnics, and community meetups across NC</div>
+    </div>
+    <div class="feature-cell" onclick="document.getElementById('businesses').scrollIntoView({behavior:'smooth'})">
+      <div class="fc-icon" style="background:var(--blue-light);">🏪</div>
+      <div class="fc-title">Business directory</div>
+      <div class="fc-desc">Find Nepali restaurants, grocery stores, lawyers, doctors and more</div>
+    </div>
+    <div class="feature-cell" onclick="document.getElementById('jobs').scrollIntoView({behavior:'smooth'})">
+      <div class="fc-icon" style="background:#ECFDF5;">💼</div>
+      <div class="fc-title">Job board</div>
+      <div class="fc-desc">Jobs, internships and volunteering from and for the community</div>
+    </div>
+    <div class="feature-cell" onclick="document.getElementById('news').scrollIntoView({behavior:'smooth'})">
+      <div class="fc-icon" style="background:var(--gold-light);">📰</div>
+      <div class="fc-title">News & updates</div>
+      <div class="fc-desc">Immigration, local news, NC policy updates and community announcements</div>
+    </div>
+    <div class="feature-cell" onclick="document.getElementById('forum').scrollIntoView({behavior:'smooth'})">
+      <div class="fc-icon" style="background:#F5F0FF;">💬</div>
+      <div class="fc-title">Community forum</div>
+      <div class="fc-desc">Ask, share, help and connect with fellow Nepalis in NC</div>
+    </div>
+    <div class="feature-cell" onclick="document.getElementById('culture').scrollIntoView({behavior:'smooth'})">
+      <div class="fc-icon" style="background:#FFF0F5;">🎭</div>
+      <div class="fc-title">Cultural resources</div>
+      <div class="fc-desc">Nepali language, recipes, music, festivals and heritage guides</div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="section section-alt" id="events">
+  <div class="section-header">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">Community calendar</div>
+        <div class="section-title">Upcoming events</div>
+      </div>
+      <a href="#" class="see-all-link">View all events →</a>
+    </div>
+  </div>
+  <div class="events-grid">
+    <div class="event-card">
+      <div class="event-stripe" style="background:var(--red);"></div>
+      <div class="event-body">
+        <div class="event-meta">
+          <span class="event-badge" style="background:var(--red-light); color:var(--red);">Cultural</span>
+          <span class="event-date-pill">Jun 7, 2026</span>
+        </div>
+        <div class="event-title">Nepali Cultural Night 2026</div>
+        <div class="event-where">📍 Charlotte Convention Center</div>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-stripe" style="background:#16A34A;"></div>
+      <div class="event-body">
+        <div class="event-meta">
+          <span class="event-badge" style="background:#ECFDF5; color:#16A34A;">Family</span>
+          <span class="event-date-pill">Jun 15, 2026</span>
+        </div>
+        <div class="event-title">Summer Picnic & Kids Day</div>
+        <div class="event-where">📍 Freedom Park, Charlotte</div>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-stripe" style="background:var(--blue);"></div>
+      <div class="event-body">
+        <div class="event-meta">
+          <span class="event-badge" style="background:var(--blue-light); color:var(--blue);">Social</span>
+          <span class="event-date-pill">Jul 4, 2026</span>
+        </div>
+        <div class="event-title">Independence Cookout — Raleigh</div>
+        <div class="event-where">📍 Dorothea Dix Park, Raleigh</div>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-stripe" style="background:var(--gold);"></div>
+      <div class="event-body">
+        <div class="event-meta">
+          <span class="event-badge" style="background:var(--gold-light); color:#8B6914;">Festival</span>
+          <span class="event-date-pill">Oct 2026</span>
+        </div>
+        <div class="event-title">Dashain Celebration — Greater NC</div>
+        <div class="event-where">📍 Multiple venues statewide</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESSES -->
+<section class="section" id="businesses">
+  <div class="section-header">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">Business directory</div>
+        <div class="section-title">Nepali-owned businesses</div>
+      </div>
+      <a href="#" class="see-all-link">Browse all 180+ →</a>
+    </div>
+  </div>
+  <div class="biz-grid">
+    <div class="biz-card">
+      <div class="biz-avatar" style="background:var(--red-light);">🍛</div>
+      <div class="biz-info">
+        <div class="biz-name">Himalaya Spice</div>
+        <div class="biz-cat">Nepali Restaurant</div>
+        <div class="biz-row"><span class="biz-city">Charlotte</span><span class="biz-stars">★★★★★</span></div>
+      </div>
+    </div>
+    <div class="biz-card">
+      <div class="biz-avatar" style="background:#ECFDF5;">🛒</div>
+      <div class="biz-info">
+        <div class="biz-name">Kathmandu Grocers</div>
+        <div class="biz-cat">Grocery & Imports</div>
+        <div class="biz-row"><span class="biz-city">Cary</span><span class="biz-stars">★★★★☆</span></div>
+      </div>
+    </div>
+    <div class="biz-card">
+      <div class="biz-avatar" style="background:var(--blue-light);">⚕️</div>
+      <div class="biz-info">
+        <div class="biz-name">Dr. Thapa & Associates</div>
+        <div class="biz-cat">Medical Practice</div>
+        <div class="biz-row"><span class="biz-city">Raleigh</span><span class="biz-stars">★★★★★</span></div>
+      </div>
+    </div>
+    <div class="biz-card">
+      <div class="biz-avatar" style="background:var(--gold-light);">⚖️</div>
+      <div class="biz-info">
+        <div class="biz-name">Nepal Law Group</div>
+        <div class="biz-cat">Immigration Law</div>
+        <div class="biz-row"><span class="biz-city">Durham</span><span class="biz-stars">★★★★☆</span></div>
+      </div>
+    </div>
+    <div class="biz-card">
+      <div class="biz-avatar" style="background:#F5F0FF;">💰</div>
+      <div class="biz-info">
+        <div class="biz-name">Sherpa Financial</div>
+        <div class="biz-cat">Financial Services</div>
+        <div class="biz-row"><span class="biz-city">Charlotte</span><span class="biz-stars">★★★★★</span></div>
+      </div>
+    </div>
+    <div class="biz-card">
+      <div class="biz-avatar" style="background:#FFF0F5;">💇</div>
+      <div class="biz-info">
+        <div class="biz-name">Pokhara Beauty Salon</div>
+        <div class="biz-cat">Beauty & Wellness</div>
+        <div class="biz-row"><span class="biz-city">Apex</span><span class="biz-stars">★★★★☆</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOBS -->
+<section class="section section-alt" id="jobs">
+  <div class="section-header">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">Career opportunities</div>
+        <div class="section-title">Job board</div>
+      </div>
+      <a href="#" class="see-all-link">Post a job →</a>
+    </div>
+  </div>
+  <div class="jobs-list">
+    <div class="job-row">
+      <div class="job-left">
+        <div class="job-title-text">Software Engineer — React / Node.js</div>
+        <div class="job-meta">TechCorp · Charlotte, NC · $110k–$140k</div>
+      </div>
+      <div class="job-right">
+        <span class="job-type" style="background:#ECFDF5; color:#16A34A;">Full-time</span>
+        <span class="job-apply">Apply →</span>
+      </div>
+    </div>
+    <div class="job-row">
+      <div class="job-left">
+        <div class="job-title-text">Nepali Interpreter / Translator</div>
+        <div class="job-meta">NC Dept of Health · Raleigh, NC · $22–$28/hr</div>
+      </div>
+      <div class="job-right">
+        <span class="job-type" style="background:#EFF6FF; color:#1D4ED8;">Part-time</span>
+        <span class="job-apply">Apply →</span>
+      </div>
+    </div>
+    <div class="job-row">
+      <div class="job-left">
+        <div class="job-title-text">Restaurant Manager</div>
+        <div class="job-meta">Himalaya Spice · Charlotte, NC · Competitive</div>
+      </div>
+      <div class="job-right">
+        <span class="job-type" style="background:#ECFDF5; color:#16A34A;">Full-time</span>
+        <span class="job-apply">Apply →</span>
+      </div>
+    </div>
+    <div class="job-row">
+      <div class="job-left">
+        <div class="job-title-text">Immigration Paralegal</div>
+        <div class="job-meta">Nepal Law Group · Durham, NC · $45k–$60k</div>
+      </div>
+      <div class="job-right">
+        <span class="job-type" style="background:#ECFDF5; color:#16A34A;">Full-time</span>
+        <span class="job-apply">Apply →</span>
+      </div>
+    </div>
+    <div class="job-row">
+      <div class="job-left">
+        <div class="job-title-text">Community Outreach Volunteer</div>
+        <div class="job-meta">Nepali NC · Statewide · Volunteer</div>
+      </div>
+      <div class="job-right">
+        <span class="job-type" style="background:var(--gold-light); color:#8B6914;">Volunteer</span>
+        <span class="job-apply">Join →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="section" id="news">
+  <div class="section-header">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">Stay informed</div>
+        <div class="section-title">Latest news & updates</div>
+      </div>
+      <a href="#" class="see-all-link">All news →</a>
+    </div>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="news-card-img" style="background:var(--red-light);">🛒</div>
+      <div class="news-card-body">
+        <span class="news-tag-pill" style="background:var(--red-light); color:var(--red);">Community</span>
+        <div class="news-title-text">New Nepali grocery store opens in Cary, NC</div>
+        <div class="news-meta-row">2 hours ago · Community Desk</div>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-card-img" style="background:var(--blue-light);">🎓</div>
+      <div class="news-card-body">
+        <span class="news-tag-pill" style="background:var(--blue-light); color:var(--blue);">Education</span>
+        <div class="news-title-text">NRNA NC chapter launches scholarship for Nepali students</div>
+        <div class="news-meta-row">1 day ago · NRNA NC</div>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-card-img" style="background:#ECFDF5;">⚖️</div>
+      <div class="news-card-body">
+        <span class="news-tag-pill" style="background:#ECFDF5; color:#16A34A;">Immigration</span>
+        <div class="news-title-text">Free legal aid clinic for Nepali families — June 20 in Charlotte</div>
+        <div class="news-meta-row">3 days ago · Legal Aid NC</div>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-card-img" style="background:var(--gold-light);">🏛️</div>
+      <div class="news-card-body">
+        <span class="news-tag-pill" style="background:var(--gold-light); color:#8B6914;">Policy</span>
+        <div class="news-title-text">NC passes new multilingual services bill — Nepali included</div>
+        <div class="news-meta-row">1 week ago · NC Legislature</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORUM -->
+<section class="section section-alt" id="forum">
+  <div class="section-header">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">Community voices</div>
+        <div class="section-title">Forum discussions</div>
+      </div>
+      <a href="#" class="see-all-link">Join the forum →</a>
+    </div>
+  </div>
+  <div class="forum-list">
+    <div class="forum-row">
+      <div class="forum-avatar" style="background:var(--red);">RS</div>
+      <div class="forum-body">
+        <div class="forum-question">Best Nepali grocery stores near Research Triangle area?</div>
+        <div class="forum-info">by Ramesh S. · General Discussion</div>
+      </div>
+      <div class="forum-right">
+        <div class="forum-count">24 replies</div>
+        <div class="forum-time">2h ago</div>
+      </div>
+    </div>
+    <div class="forum-row">
+      <div class="forum-avatar" style="background:var(--blue);">SP</div>
+      <div class="forum-body">
+        <div class="forum-question">Recommendations for a good immigration lawyer in Charlotte?</div>
+        <div class="forum-info">by Sita P. · Legal & Immigration</div>
+      </div>
+      <div class="forum-right">
+        <div class="forum-count">18 replies</div>
+        <div class="forum-time">5h ago</div>
+      </div>
+    </div>
+    <div class="forum-row">
+      <div class="forum-avatar" style="background:#16A34A;">BT</div>
+      <div class="forum-body">
+        <div class="forum-question">Nepali language classes for kids in Raleigh — any options?</div>
+        <div class="forum-info">by Binod T. · Education</div>
+      </div>
+      <div class="forum-right">
+        <div class="forum-count">11 replies</div>
+        <div class="forum-time">1d ago</div>
+      </div>
+    </div>
+    <div class="forum-row">
+      <div class="forum-avatar" style="background:#7C3AED;">MG</div>
+      <div class="forum-body">
+        <div class="forum-question">Which NC county is easiest to find affordable housing for families?</div>
+        <div class="forum-info">by Maya G. · Housing & Relocation</div>
+      </div>
+      <div class="forum-right">
+        <div class="forum-count">31 replies</div>
+        <div class="forum-time">2d ago</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section class="section" id="culture">
+  <div class="section-header">
+    <div class="section-label">Heritage & traditions</div>
+    <div class="section-title">Cultural resources</div>
+    <div class="section-sub">Explore Nepali language, food, music, and festivals from the comfort of NC</div>
+  </div>
+  <div class="cultural-grid">
+    <div class="cultural-card">
+      <span class="cultural-icon">📚</span>
+      <div class="cultural-name">Nepali language</div>
+      <div class="cultural-sub">Lessons & resources</div>
+    </div>
+    <div class="cultural-card">
+      <span class="cultural-icon">🍲</span>
+      <div class="cultural-name">Recipes</div>
+      <div class="cultural-sub">Dal, momo & more</div>
+    </div>
+    <div class="cultural-card">
+      <span class="cultural-icon">🎵</span>
+      <div class="cultural-name">Music</div>
+      <div class="cultural-sub">Folk & modern songs</div>
+    </div>
+    <div class="cultural-card">
+      <span class="cultural-icon">🎪</span>
+      <div class="cultural-name">Festivals</div>
+      <div class="cultural-sub">Dashain, Tihar, Holi</div>
+    </div>
+    <div class="cultural-card">
+      <span class="cultural-icon">🏔️</span>
+      <div class="cultural-name">Nepal history</div>
+      <div class="cultural-sub">Heritage & stories</div>
+    </div>
+    <div class="cultural-card">
+      <span class="cultural-icon">👘</span>
+      <div class="cultural-name">Traditional dress</div>
+      <div class="cultural-sub">Daura-suruwal & more</div>
+    </div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section class="section section-alt">
+  <div class="section-header">
+    <div class="section-label">Find your city</div>
+    <div class="section-title">NC communities we serve</div>
+  </div>
+  <div class="cities-grid">
+    <div class="city-card"><div class="city-icon">🏙️</div><div class="city-name">Charlotte</div><div class="city-count">840 members</div></div>
+    <div class="city-card"><div class="city-icon">🌿</div><div class="city-name">Raleigh</div><div class="city-count">620 members</div></div>
+    <div class="city-card"><div class="city-icon">🎓</div><div class="city-name">Durham</div><div class="city-count">310 members</div></div>
+    <div class="city-card"><div class="city-icon">🌳</div><div class="city-name">Cary</div><div class="city-count">290 members</div></div>
+    <div class="city-card"><div class="city-icon">🏡</div><div class="city-name">Apex</div><div class="city-count">185 members</div></div>
+    <div class="city-card"><div class="city-icon">🏫</div><div class="city-name">Chapel Hill</div><div class="city-count">140 members</div></div>
+    <div class="city-card"><div class="city-icon">🌾</div><div class="city-name">Greensboro</div><div class="city-count">120 members</div></div>
+    <div class="city-card"><div class="city-icon">⚓</div><div class="city-name">Wilmington</div><div class="city-count">95 members</div></div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-banner-bg"></div>
+  <div class="cta-banner-content">
+    <h2>Ready to connect with<br>your community?</h2>
+    <p>Join 2,400+ Nepalis who call North Carolina home.</p>
+  </div>
+  <div class="cta-banner-actions">
+    <button class="cta-primary" onclick="openModal()">Create free account</button>
+    <button class="cta-ghost" onclick="openModal()">Sign in</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo" style="text-decoration:none;">
+        <div class="logo-mark">न</div>
+        <div class="logo-words">
+          <div class="logo-en" style="color:white;">Nepali NC</div>
+          <div class="logo-np" style="color:rgba(255,255,255,0.4);">Community Hub</div>
+        </div>
+      </div>
+      <p>Connecting the Nepali diaspora across North Carolina — events, businesses, jobs, culture and community.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      <a href="#">Events calendar</a>
+      <a href="#">Community forum</a>
+      <a href="#">Member directory</a>
+      <a href="#">Volunteer</a>
+    </div>
+    <div class="footer-col">
+      <h4>Discover</h4>
+      <a href="#">Business directory</a>
+      <a href="#">Job board</a>
+      <a href="#">Cultural resources</a>
+      <a href="#">News & updates</a>
+    </div>
+    <div class="footer-col">
+      <h4>Cities</h4>
+      <a href="#">Charlotte</a>
+      <a href="#">Raleigh / Durham</a>
+      <a href="#">Cary / Apex</a>
+      <a href="#">Greensboro</a>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <a href="#">About us</a>
+      <a href="#">Contact</a>
+      <a href="#">Advertise</a>
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms of use</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Nepali NC Community Hub · Made with ❤️ for the Nepali diaspora in North Carolina</span>
+    <div class="footer-security">
+      <div class="sec-badge"><span>🔒</span><strong>SSL</strong></div>
+      <div class="sec-badge"><span>🛡️</span><strong>GDPR</strong></div>
+      <div class="sec-badge"><span>⚡</span><strong>Vercel CDN</strong></div>
+      <div class="sec-badge"><span>🗄️</span><strong>Supabase</strong></div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2>Join Nepali NC</h2>
+    <p>Free forever · Secure · No spam</p>
+    <div class="modal-tabs">
+      <button class="modal-tab active" onclick="switchTab('signup',this)">Create account</button>
+      <button class="modal-tab" onclick="switchTab('signin',this)">Sign in</button>
+    </div>
+    <div id="signup-form">
+      <div class="form-group">
+        <label class="form-label">Full name</label>
+        <input class="form-input" type="text" placeholder="Ramesh Sharma"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email address</label>
+        <input class="form-input" type="email" placeholder="ramesh@example.com"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" placeholder="Min. 8 characters"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">City in NC</label>
+        <select class="form-input">
+          <option>Charlotte</option><option>Raleigh</option><option>Durham</option>
+          <option>Cary</option><option>Apex</option><option>Chapel Hill</option>
+          <option>Greensboro</option><option>Other</option>
+        </select>
+      </div>
+      <button class="form-submit">Create my free account</button>
+      <div class="form-secure">🔒 Secured by Supabase Auth · SSL encrypted</div>
+    </div>
+    <div id="signin-form" style="display:none;">
+      <div class="form-group">
+        <label class="form-label">Email address</label>
+        <input class="form-input" type="email" placeholder="you@example.com"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" placeholder="Your password"/>
+      </div>
+      <button class="form-submit">Sign in</button>
+      <div class="form-secure">🔒 Secured by Supabase Auth · SSL encrypted</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── MODAL / NAV ── */
+function openModal() { document.getElementById('modal').classList.add('open'); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function switchTab(tab, btn) {
+  document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('signup-form').style.display = tab === 'signup' ? 'block' : 'none';
+  document.getElementById('signin-form').style.display = tab === 'signin' ? 'block' : 'none';
+}
+function setLang(lang, btn) {
+  document.querySelectorAll('.lang-pill button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+/* ── BIKRAM SAMBAT CALENDAR ── */
+// Days in each month for BS years 2000–2089
+// Each entry: [year, [months Jan-Dec lengths]]
+const BS_DATA = {
+  2079:[30,32,31,32,31,30,30,30,29,29,30,31],
+  2080:[31,31,32,32,31,30,30,30,29,30,30,31],
+  2081:[31,31,32,32,31,30,30,30,29,30,30,31],
+  2082:[31,32,31,32,31,30,30,30,29,30,30,31],
+  2083:[30,32,31,32,31,30,30,30,29,30,30,31],
+  2084:[31,31,32,31,31,31,30,29,30,29,30,30],
+  2085:[31,31,32,32,31,30,30,29,30,29,30,31],
+  2086:[31,32,31,32,31,30,30,30,29,29,30,31],
+  2087:[30,32,31,32,31,30,30,30,29,30,30,31],
+  2088:[31,31,32,32,31,30,30,30,29,30,30,31],
+  2089:[31,31,32,32,31,30,30,30,29,30,30,31],
+};
+
+const BS_MONTHS = ['Baisakh','Jestha','Ashadh','Shrawan','Bhadra','Ashwin','Kartik','Mangsir','Poush','Magh','Falgun','Chaitra'];
+const BS_MONTHS_NP = ['बैशाख','जेठ','असार','साउन','भदौ','असोज','कार्तिक','मंसिर','पौष','माघ','फागुन','चैत'];
+const US_DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const US_MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const BS_DAYS_NP = ['आइतबार','सोमबार','मंगलबार','बुधबार','बिहिबार','शुक्रबार','शनिबार'];
+
+// Reference: 2000-01-01 AD = 2056-09-17 BS
+const REF_AD = new Date(2000, 0, 1);
+const REF_BS = { y: 2056, m: 9, d: 17 }; // month is 1-indexed
+
+function adToBS(adDate) {
+  // total days since reference
+  const msPerDay = 86400000;
+  let totalDays = Math.floor((adDate - REF_AD) / msPerDay);
+
+  let bsy = REF_BS.y;
+  let bsm = REF_BS.m; // 1-indexed
+  let bsd = REF_BS.d;
+
+  if (totalDays >= 0) {
+    while (totalDays > 0) {
+      const monthData = BS_DATA[bsy];
+      if (!monthData) { bsy++; continue; }
+      const daysInMonth = monthData[bsm - 1];
+      const remaining = daysInMonth - bsd;
+      if (totalDays <= remaining) {
+        bsd += totalDays;
+        totalDays = 0;
+      } else {
+        totalDays -= (remaining + 1);
+        bsd = 1;
+        bsm++;
+        if (bsm > 12) { bsm = 1; bsy++; }
+      }
+    }
+  }
+  return { y: bsy, m: bsm, d: bsd };
+}
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function fmt12(h, m, s) {
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 || 12;
+  return `${pad(h12)}:${pad(m)}:${pad(s)} ${ampm}`;
+}
+
+function updateClocks() {
+  const now = new Date();
+
+  // Nepal time: UTC+5:45
+  const utcMs = now.getTime() + now.getTimezoneOffset() * 60000;
+  const npMs = utcMs + (5 * 3600 + 45 * 60) * 1000;
+  const npDate = new Date(npMs);
+  const npH = npDate.getHours(), npM = npDate.getMinutes(), npS = npDate.getSeconds();
+
+  // US Eastern time (NC): UTC-4 EDT / UTC-5 EST
+  // Use Intl API for accuracy
+  const etStr = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
+  const etDate = new Date(etStr);
+  const usH = etDate.getHours(), usM = etDate.getMinutes(), usS = etDate.getSeconds();
+
+  // BS conversion from Nepal date
+  const npADDate = new Date(npDate.getFullYear(), npDate.getMonth(), npDate.getDate());
+  const bs = adToBS(npADDate);
+  const bsMonthEn = BS_MONTHS[bs.m - 1] || '';
+  const bsMonthNp = BS_MONTHS_NP[bs.m - 1] || '';
+  const dayOfWeekNp = BS_DAYS_NP[npDate.getDay()];
+
+  // NC date strings
+  const usDayName = US_DAYS[etDate.getDay()];
+  const usMonthName = US_MONTHS_FULL[etDate.getMonth()];
+  const usDay = etDate.getDate();
+  const usYear = etDate.getFullYear();
+
+  document.getElementById('np-time').textContent = fmt12(npH, npM, npS);
+  document.getElementById('np-date').textContent =
+    `${dayOfWeekNp} · ${bs.d} ${bsMonthNp} ${bs.y} BS  ·  ${bsMonthEn} ${bs.d}, ${bs.y} BS`;
+
+  document.getElementById('us-time').textContent = fmt12(usH, usM, usS);
+  document.getElementById('us-date').textContent =
+    `${usDayName}, ${usMonthName} ${usDay}, ${usYear} · North Carolina (ET)`;
+}
+
+updateClocks();
+setInterval(updateClocks, 1000);
+</script>
+</body>
+</html>
